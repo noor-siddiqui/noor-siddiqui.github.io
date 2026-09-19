@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item *)",
+      "Bash(Copy-Item *)",
+      "Bash(npm run build *)",
+      "Bash(npm run preview *)",
+      "Bash($process *)",
+      "Bash($page *)",
+      "Bash($image *)",
+      "Bash($resume *)",
+      "Bash(Stop-Process *)",
+      "Bash(Remove-Item *)",
+      "Bash($ids *)",
+      "Bash(npm run build *)",
+      "Bash(npm run build *)"
+    ]
+  }
+}

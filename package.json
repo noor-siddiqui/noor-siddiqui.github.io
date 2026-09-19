@@ -1,0 +1,21 @@
+{
+  "name": "noor-siddiqui-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.179.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4"
+  }
+}

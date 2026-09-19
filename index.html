@@ -1,873 +1,252 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noor Nabiul Alam Siddiqui | Senior Programmer</title>
     <meta name="description"
-        content="Portfolio of Engr. Noor Nabiul Alam Siddiqui - Senior Programmer, Web-GIS Specialist & AI Enthusiast">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
-
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            /* Color Palette */
-            --bg-dark: #0f1115;
-            --bg-card: #161b22;
-            --bg-card-hover: #1f2937;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent-yellow: #FFD700;
-            /* Bright Yellow */
-            --accent-yellow-dim: #cca900;
-
-            /* Spacing */
-            --section-padding: 80px 0;
-            --container-width: 1100px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: 0.3s;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: var(--section-padding);
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-yellow);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .highlight {
-            color: var(--accent-yellow);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--accent-yellow);
-            color: var(--bg-dark);
-            font-weight: 700;
-            border-radius: 5px;
-            border: 2px solid var(--accent-yellow);
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--accent-yellow);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--accent-yellow);
-            border: 2px solid var(--accent-yellow);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--accent-yellow);
-            color: var(--bg-dark);
-        }
-
-        /* --- HEADER & NAV --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(15, 17, 21, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-yellow);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-yellow);
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h3 {
-            font-size: 1.2rem;
-
-            margin-bottom: 10px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--accent-yellow);
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .img-container {
-            width: 350px;
-            height: 350px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Creating the yellow shape effect behind image */
-        .img-bg {
-            position: absolute;
-            top: 20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--accent-yellow);
-            border-radius: 20px;
-            z-index: -1;
-            transition: 0.3s;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            filter: grayscale(10%);
-            transition: 0.3s;
-        }
-
-        .hero-image:hover .img-bg {
-            top: 15px;
-            right: -15px;
-        }
-
-        .hero-image:hover img {
-            filter: grayscale(0%);
-        }
-
-        .social-links {
-            margin-top: 30px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .social-links a:hover {
-            color: var(--accent-yellow);
-            transform: translateY(-3px);
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--text-muted);
-        }
-
-        .info-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-            font-size: 0.9rem;
-        }
-
-        .info-item i {
-            color: var(--accent-yellow);
-        }
-
-        /* --- SKILLS SECTION --- */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 10px;
-            transition: 0.3s;
-            border-top: 3px solid transparent;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-top: 3px solid var(--accent-yellow);
-            background-color: var(--bg-card-hover);
-        }
-
-        .skill-card h3 {
-            margin-bottom: 20px;
-            color: var(--accent-yellow);
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            background-color: rgba(255, 215, 0, 0.1);
-            color: var(--accent-yellow);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* --- EXPERIENCE SECTION --- */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-item {
-            padding-left: 30px;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: var(--accent-yellow);
-            border: 3px solid var(--bg-dark);
-        }
-
-        .timeline-date {
-            color: var(--accent-yellow);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-company {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        /* --- PROJECTS SECTION --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: var(--bg-card);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-category {
-            font-size: 0.8rem;
-            color: var(--accent-yellow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .project-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-tech {
-            display: flex;
-            gap: 10px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .project-link {
-            align-self: flex-start;
-            color: var(--text-main);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .project-link:hover {
-            color: var(--accent-yellow);
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            background-color: var(--bg-card);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            font-size: 1.2rem;
-        }
-
-        .contact-item i {
-            color: var(--accent-yellow);
-            font-size: 1.5rem;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 900px) {
-            .hero-content {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .hero-text p {
-                margin: 0 auto 30px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-card);
-                flex-direction: column;
-                padding: 20px 0;
-                gap: 20px;
-                text-align: center;
-                display: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .img-container {
-                width: 280px;
-                height: 280px;
-            }
-        }
-    </style>
+        content="Portfolio of Noor Nabiul Alam Siddiqui, a senior programmer specializing in Web-GIS, scalable platforms, and applied AI.">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="Noor Nabiul Alam Siddiqui — Senior Programmer">
+    <meta property="og:description" content="Web-GIS, applied AI, and scalable digital systems.">
+    <meta property="og:image" content="/Noor_Nabiul_Alam_Siddiqui.png">
+    <title>Noor Nabiul Alam Siddiqui — Senior Programmer</title>
 </head>
 
 <body>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Engr.<span class="highlight">Noor</span></div>
-                <div class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="Noor Siddiqui, home">NS<span>.</span></a>
+        <nav aria-label="Primary navigation">
+            <a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a>
+        </nav>
+        <a class="header-cta" href="mailto:noor.siddiqui@smec.com">Let's talk <span>↗</span></a>
     </header>
-
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h3>Hello, I am</h3>
-                    <h1>Engr. Noor Nabiul <br>Alam Siddiqui</h1>
-                    <p>Senior Programmer | Web-GIS | Problem Solver. <br>
-                        Award-winning developer with 9+ years of experience in scalable systems, AI, and Android Apps.
-                    </p>
-
-                    <a href="#contact" class="btn">Get in Touch</a>
-                    <a href="#projects" class="btn-outline"
-                        style="margin-left: 10px; padding: 12px 28px; border-radius: 5px; text-decoration: none; font-weight: 700;">View
-                        Work</a>
-
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/sazalns" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:siddiqui.sazal@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="img-container">
-                        <div class="img-bg"></div>
-                        <!-- Make sure 'me.jpg' is in the same folder -->
-                        <img src="me.jpg" alt="Noor Nabiul Alam Siddiqui">
-                    </div>
-                </div>
+    <main id="main">
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero-noise" aria-hidden="true"></div>
+            <div class="eyebrow reveal"><span></span> Dhaka, Bangladesh · Available for ideas</div>
+            <h1 id="hero-title" class="hero-title"><span>NOOR</span><span>SIDD<span class="accent">I</span>QUI</span>
+            </h1>
+            <div class="hero-bottom reveal">
+                <p>Senior programmer shaping complex data into <strong>clear, useful systems.</strong></p>
+                <a class="round-link" href="#work" aria-label="Explore selected work">Explore<br>work <span>↓</span></a>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="hero-index" aria-hidden="true">Portfolio / 2026</div>
+        </section>
+        <section class="about section" id="about" aria-labelledby="about-title">
+            <div class="section-label"><span>01</span> About</div>
             <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        I am a results-driven and award-winning programmer with over 9 years of experience in web
-                        development, AI, and Android applications.
-                        I have a proven track record of designing scalable systems, leading cross-functional teams, and
-                        delivering user-centric solutions
-                        that solve complex technical challenges.
-                    </p>
-                    <p>
-                        Currently serving as a Senior Programmer at ACE Consultant Ltd. (an SMEC Company), I specialize
-                        in Agile Methodologies,
-                        Web-GIS platforms, and AI model deployment. I recently received the Tech-Champ Award for
-                        developing a cutting-edge Web-GIS platform.
-                    </p>
-                    <a href="Noor_Nabiul_Alam_Siddiqui_Resume.pdf" class="btn" download>Download CV <i
-                            class="fas fa-download"></i></a>
+                <h2 id="about-title" class="display reveal">I build at the intersection of <em>maps, machines</em> and
+                    people.
+                </h2>
+                <div class="about-copy reveal">
+                    <p>I'm Noor, an award-winning senior programmer with 10+ years of experience turning ambitious ideas
+                        into
+                        dependable digital products.</p>
+                    <p>From nationwide Web-GIS platforms to computer vision systems, I lead teams and stay close to the
+                        code—designing solutions that are scalable, practical, and made for real-world use.</p><a
+                        class="text-link" href="/Noor_Nabiul_Alam_Siddiqui_Resume.pdf" target="_blank">Read my résumé
+                        <span>↗</span></a>
                 </div>
-                <div class="about-info">
-                    <div class="info-list">
-                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> North Badda, Dhaka</div>
-                        <div class="info-item"><i class="fas fa-envelope"></i> siddiqui.sazal@gmail.com</div>
-                        <div class="info-item"><i class="fas fa-phone"></i> +880 1915 857610</div>
-                        <div class="info-item"><i class="fas fa-graduation-cap"></i> BSc in CSE (DIU)</div>
-                    </div>
+                <figure class="portrait reveal"><img src="/Noor_Nabiul_Alam_Siddiqui.png"
+                        alt="Noor Nabiul Alam Siddiqui" width="1080" height="1080" loading="lazy" decoding="async">
+                    <figcaption>Engineer · Builder · Problem solver</figcaption>
+                </figure>
+                <div class="stats reveal">
+                    <div><strong>10+</strong><span>Years building</span></div>
+                    <div><strong>12</strong><span>Gov. projects using GiMS</span></div>
+                    <div><strong>95%</strong><span>AI speed accuracy</span></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <!-- Backend -->
-                <div class="skill-card">
-                    <h3>Backend & Web</h3>
-                    <div class="skill-tags">
-                        <span class="tag">PHP</span>
-                        <span class="tag">Laravel</span>
-                        <span class="tag">Filament</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">PostGIS</span>
-                        <span class="tag">GeoServer</span>
-                        <span class="tag">GDAL</span>
-                    </div>
-                </div>
-
-                <!-- AI & ML -->
-                <div class="skill-card">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">YOLO</span>
-                        <span class="tag">DeepSORT</span>
-                        <span class="tag">Kalman Filters</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Model Deployment</span>
-                    </div>
-                </div>
-
-                <!-- DevOps & Tools -->
-                <div class="skill-card">
-                    <h3>Infrastructure & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Windows Servers</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Nginx</span>
-                        <span class="tag">Apache</span>
-                        <span class="tag">SSL</span>
-                        <span class="tag">Cloudflare</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Agile Workflows</span>
-                    </div>
-                </div>
+        </section>
+        <section class="work section" id="work" aria-labelledby="work-title">
+            <div class="section-label"><span>02</span> Selected work</div>
+            <div class="work-heading">
+                <h2 id="work-title" class="display reveal">Systems with <em>purpose.</em></h2>
+                <p class="reveal">A selection of platforms and intelligent tools built for infrastructure, teams, and
+                    cities.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">March 2020 - Present</div>
-                    <h3 class="timeline-title">Senior Programmer</h3>
-                    <div class="timeline-company">ACE Consultant Ltd. (an SMEC Company), Dhaka</div>
-                    <p>Leading cross-functional teams in designing scalable software. Administering servers (PHP, MySQL,
-                        GeoServer). Notable achievements include the Tech-Champ Award and leading the IAMCR Activity
-                        System & GiMS Web-GIS.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Feb 2017 - July 2017</div>
-                    <h3 class="timeline-title">Android Developer</h3>
-                    <div class="timeline-company">RTsoftBD, Dhaka</div>
-                    <p>Designed scalable architecture for Android platforms. Developed applications like The Blood Bank,
-                        Client Management System, and Hello Car.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2013 - Dec 2013</div>
-                    <h3 class="timeline-title">Junior Researcher</h3>
-                    <div class="timeline-company">Daffodil International University & VIT University</div>
-                    <p>Participated in data mining research to analyze student performance metrics and predict learning
-                        outcomes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-category">Award Winning</div>
-                        <h3 class="project-title">GiMS Web-GIS Platform</h3>
-                        <p class="project-desc">A cutting-edge Web-GIS platform empowering users with real-time data
-                            visualization, collaborative decision-making, and 3D visualization. Deployed over 11 Gov.
-                            Projects.</p>
-                        <div class="project-tech">
-                            <span>PostGIS</span> <span>GeoServer</span> <span>Laravel</span>
+            <div class="project-list">
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">01</span><span class="project-intro"><span
+                                class="project-type">Web-GIS · Award-winning</span><strong>GiMS
+                                Platform</strong><span>Real-time data,
+                                collaborative decisions, and 3D visualization deployed across government
+                                projects.</span></span><span class="project-tech">Laravel · PostGIS ·
+                            GeoServer</span><span class="project-toggle" aria-hidden="true"></span></summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img" aria-label="GiMS project image placeholder">Image
+                                01</span><span role="img" aria-label="GiMS project image placeholder">Image
+                                02</span><span role="img" aria-label="GiMS project image placeholder">Image 03</span>
                         </div>
-                        <a href="https://gims.oneacebd.com" target="_blank" class="project-link">Live Preview <i
-                                class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-category">AI / Computer Vision</div>
-                        <h3 class="project-title">AI-Driven Speed Estimation</h3>
-                        <p class="project-desc">Designed a system using Python and OpenCV (YOLO, DeepSORT) to estimate
-                            vehicle speeds and classify types with ~95% accuracy for urban planning.</p>
-                        <div class="project-tech">
-                            <span>Python</span> <span>YOLO</span> <span>OpenCV</span>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the GiMS Platform, its challenge, solution, and impact.</p><a
+                                class="project-link" href="https://gims.oneacebd.com" target="_blank"
+                                rel="noreferrer">Visit project
+                                <span>↗</span></a>
                         </div>
                     </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-category">Web App</div>
-                        <h3 class="project-title">HSW & IT Help Desk</h3>
-                        <p class="project-desc">Collaborative portal using Laravel TALL stack and Filament to enhance
-                            team productivity and focus on safety and IT support.</p>
-                        <div class="project-tech">
-                            <span>Laravel</span> <span>Filament</span> <span>Livewire</span>
+                </details>
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">02</span><span class="project-intro"><span
+                                class="project-type">Infrastructure · Indonesia</span><strong>IAMCR Activity
+                                System</strong><span>Engineering tools that turn automated road maintenance plans into
+                                precise,
+                                field-ready decisions.</span></span><span class="project-tech">IRMSv3 · Data
+                            visualization</span><span class="project-toggle" aria-hidden="true"></span></summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img" aria-label="IAMCR project image placeholder">Image
+                                01</span><span role="img" aria-label="IAMCR project image placeholder">Image
+                                02</span><span role="img" aria-label="IAMCR project image placeholder">Image 03</span>
                         </div>
-                        <a href="https://hsw.oneacebd.com" target="_blank" class="project-link">Live Preview <i
-                                class="fas fa-external-link-alt"></i></a>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the IAMCR Activity System, its challenge, solution, and
+                                impact.</p><span class="project-link" aria-disabled="true">Project link coming
+                                soon</span>
+                        </div>
                     </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-category">Engineering Tool</div>
-                        <h3 class="project-title">IAMCR Activity System</h3>
-                        <p class="project-desc">Advanced road maintenance utilities for Indonesia, bridging automated
-                            data processing and field application for AgileAssets IRMSv3 platform.</p>
-                        <div class="project-tech">
-                            <span>Data Processing</span> <span>Engineering</span>
+                </details>
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">03</span><span class="project-intro"><span
+                                class="project-type">Computer vision</span><strong>AI Speed
+                                Estimation</strong><span>Vehicle speed and
+                                type estimation from traffic video, designed to improve transport modeling
+                                data.</span></span><span class="project-tech">Python · YOLO · DeepSORT</span><span
+                            class="project-toggle" aria-hidden="true"></span></summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img"
+                                aria-label="AI Speed Estimation project image placeholder">Image 01</span><span
+                                role="img" aria-label="AI Speed Estimation project image placeholder">Image
+                                02</span><span role="img"
+                                aria-label="AI Speed Estimation project image placeholder">Image 03</span></div>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the AI Speed Estimation project, its challenge, solution, and
+                                impact.</p>
+                            <span class="project-link" aria-disabled="true">Project link coming soon</span>
                         </div>
+                    </div>
+                </details>
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">04</span><span class="project-intro"><span
+                                class="project-type">Workplace platform</span><strong>HSW & IT Help Desk</strong><span>A
+                                unified portal
+                                helping teams stay productive while prioritizing safety, wellbeing, and
+                                support.</span></span><span class="project-tech">TALL Stack · Filament</span><span
+                            class="project-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img"
+                                aria-label="HSW and IT Help Desk project image placeholder">Image 01</span><span
+                                role="img" aria-label="HSW and IT Help Desk project image placeholder">Image
+                                02</span><span role="img"
+                                aria-label="HSW and IT Help Desk project image placeholder">Image 03</span></div>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the HSW and IT Help Desk, its challenge, solution, and impact.
+                            </p><a class="project-link" href="https://hsw.oneacebd.com" target="_blank"
+                                rel="noreferrer">Visit project
+                                <span>↗</span></a>
+                        </div>
+                    </div>
+                </details>
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">05</span><span class="project-intro"><span
+                                class="project-type">Applied AI</span><strong>Traffic Count
+                                System</strong><span>Automated vehicle
+                                classification and counting trained for the realities of Bangladesh's road
+                                network.</span></span><span class="project-tech">Python · OpenCV · Custom ML</span><span
+                            class="project-toggle" aria-hidden="true"></span></summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img"
+                                aria-label="Traffic Count System project image placeholder">Image 01</span><span
+                                role="img" aria-label="Traffic Count System project image placeholder">Image
+                                02</span><span role="img"
+                                aria-label="Traffic Count System project image placeholder">Image 03</span></div>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the Traffic Count System, its challenge, solution, and impact.
+                            </p><span class="project-link" aria-disabled="true">Project link coming soon</span>
+                        </div>
+                    </div>
+                </details>
+                <details class="project">
+                    <summary class="project-summary"><span class="project-no">06</span><span class="project-intro"><span
+                                class="project-type">Operations</span><strong>Activity Tracker</strong><span>Role-aware
+                                project and task
+                                management built for transparent reporting across multidisciplinary
+                                teams.</span></span><span class="project-tech">Laravel · RBAC</span><span
+                            class="project-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="project-details">
+                        <div class="project-gallery"><span role="img"
+                                aria-label="Activity Tracker project image placeholder">Image
+                                01</span><span role="img" aria-label="Activity Tracker project image placeholder">Image
+                                02</span><span role="img" aria-label="Activity Tracker project image placeholder">Image
+                                03</span></div>
+                        <div class="project-detail-copy">
+                            <p>Add a short description of the Activity Tracker, its challenge, solution, and impact.</p>
+                            <span class="project-link" aria-disabled="true">Project link coming soon</span>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+        <section class="expertise section" id="expertise" aria-labelledby="expertise-title">
+            <div class="section-label"><span>03</span> Capabilities</div>
+            <h2 id="expertise-title" class="display reveal">What I bring<br>to the <em>table.</em></h2>
+            <div class="skill-grid">
+                <article class="skill reveal"><span>01</span>
+                    <h3>Web-GIS & Data</h3>
+                    <p>PostGIS, GeoServer, GDAL, PostgreSQL, spatial visualization, and decision-support systems.</p>
+                </article>
+                <article class="skill reveal"><span>02</span>
+                    <h3>Product Engineering</h3>
+                    <p>PHP, Laravel, Filament, MySQL, architecture, requirements, and end-to-end delivery.</p>
+                </article>
+                <article class="skill reveal"><span>03</span>
+                    <h3>Applied AI</h3>
+                    <p>Python, OpenCV, YOLO, DeepSORT, model design, deployment, and custom datasets.</p>
+                </article>
+                <article class="skill reveal"><span>04</span>
+                    <h3>Infrastructure</h3>
+                    <p>Windows Servers, Nginx, Apache, reverse proxies, Cloudflare, SSL, and monitoring.</p>
+                </article>
+            </div>
+        </section>
+        <section class="recognition section" aria-labelledby="recognition-title">
+            <div class="section-label"><span>04</span> Recognition</div>
+            <div class="recognition-grid">
+                <h2 id="recognition-title" class="display reveal">Work worth<br><em>recognizing.</em></h2>
+                <div class="award-list reveal">
+                    <div><time>2024</time>
+                        <h3>Tech-Champ Award</h3>
+                        <p>GCEO Townhall · GiMS Web-GIS Platform</p>
+                    </div>
+                    <div><time>2014</time>
+                        <h3>5th Place</h3>
+                        <p>IUT 6th National ICT Fest · IoT Project</p>
+                    </div>
+                    <div><time>Earlier</time>
+                        <h3>Honorable Mentions</h3>
+                        <p>ACM-ICPC Asia & Daffodil Programming Contest</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <p>I am currently available for new opportunities and collaborations. Feel free to reach out!</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <a href="mailto:siddiqui.sazal@gmail.com" class="btn">Say Hello</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://www.linkedin.com/in/sazalns/" target="_blank">linkedin.com/in/sazalns</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+880 1915 857610</span>
-                    </div>
-                </div>
+        </section>
+        <section class="contact section" id="contact" aria-labelledby="contact-title">
+            <div class="section-label light"><span>05</span> Get in touch</div>
+            <p class="contact-kicker reveal">Have a complex idea?</p>
+            <h2 id="contact-title" class="contact-title"><span>LET'S MAKE</span><span>IT <em>REAL.</em></span></h2>
+            <div class="contact-bottom reveal"><a href="mailto:noor.siddiqui@smec.com">noor.siddiqui@smec.com
+                    <span>↗</span></a>
+                <div><a href="https://linkedin.com/in/sazalns" target="_blank" rel="noreferrer">LinkedIn ↗</a><a
+                        href="tel:+8801915857610">+880 1915 857610</a></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> Engr. Noor Nabiul Alam Siddiqui. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-
-        // Set Current Year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Sticky Header Effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
-        });
-    </script>
+        </section>
+    </main>
+    <footer><span>© 2026 Noor Nabiul Alam Siddiqui</span><a href="#top">Back to top ↑</a></footer>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>
